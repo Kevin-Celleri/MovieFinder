@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MovieFinder</title>
+<link rel="stylesheet" href="MovieFinder_CSS.css" />
+</head>
+<body>
+
+<header>MovieFinder</header>
+
+<!-- Tabs -->
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button id="tab-Trending" role="tab" aria-controls="Trending" aria-selected="true">Trending</button>
+  <button id="tab-Genres"   role="tab" aria-controls="Genres"   aria-selected="false">Genres</button>
+  <button id="tab-About"    role="tab" aria-controls="About"    aria-selected="false">About</button>
+</nav>
+
+<!-- Search bar  -->
+<section id="SearchBar">
+  <div class="search">
+    <input id="q" type="search" placeholder="Search movies (e.g., Dune, Barbie, Parasite)" aria-label="Search movies" />
+    <button id="searchBtn">Search</button>
+  </div>
+</section>
+
+<main>
+  <!-- Panels -->
+  <section id="Trending" role="tabpanel" aria-labelledby="tab-Trending">
+    <h1>Trending This Week</h1>
+    <div id="list-trending" class="grid" aria-live="polite"></div>
+  </section>
+
+  <section id="Genres" role="tabpanel" aria-labelledby="tab-Genres" hidden>
+    <h1>Genres</h1>
+    <div id="list-genres" class="genres-grid" aria-live="polite"></div>
+    <div id="genreSpecificGrid" class="grid" aria-live="polite"></div>
+  </section>
+
+  <section id="About" role="tabpanel" aria-labelledby="tab-About" hidden>
+    <h1>About</h1>
+    <p>
+      MovieFinder is a lightweight, client-side demo that pulls data from the TMDB API and renders it with plain JavaScript—no frameworks. 
+      The app has simple tabs (Trending, Genres, About), an always-visible search bar, and a reusable <code>renderList()</code> + card builder pattern to keep the DOM updates clean and fast. 
+      Trending fetches weekly popular titles; Genres loads a responsive grid of genre buttons (which can route to Discover queries); and clicking a movie opens a slide-in details panel with backdrop, stats, overview, and top cast. 
+      It’s responsive, keyboard-friendly, and designed to be easy to extend (e.g., sort options, pagination, or watchlists) without changing the overall structure.
+    </p>
+  </section>
+
+  <!-- Search results -->
+  <section id="Search" role="tabpanel" hidden aria-labelledby="search-label">
+    <h1 id="search-label">Results for <span id="q-label"></span></h1>
+    <div id="list-search" class="grid" aria-live="polite"></div>
+  </section>
+
+  <footer>This product uses The Movie Database(TMDB) API</footer>
+</main>
+
+<!-- MOVIE Details -->
+<aside id="details-panel" aria-modal="true" aria-label="Movie details">
+  <div class="detailsHeader">
+    <img id="backdrop" alt="">
+    <button class="close-details" type="button">Close</button>
+  </div>
+  <div id="row"></div>
+  <div id="genres"></div>
+  <div id="overview"></div>
+  <div id="cast-grid"></div>
+</aside>
+
+<script type="module" src="MovieFinder_JS.js"></script>
+</body>
+</html>
